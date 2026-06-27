@@ -13,3 +13,15 @@ Rather than replacing clinic staff, the system automates repetitive administrati
 The architecture combines conversational AI with deterministic workflows. Language models are responsible for understanding user intent and selecting the appropriate action, while structured workflows execute business logic such as appointment scheduling, calendar synchronization, notifications, and data updates.
 
 By separating AI reasoning from deterministic execution, the system remains reliable, predictable, and cost-efficient while still providing a natural conversational experience.
+
+---
+
+# The Problem
+
+Most small and mid-sized clinics still rely heavily on receptionists to manage appointments and patient communication.
+
+Throughout the day, staff answer the same questions repeatedly, schedule and reschedule appointments over WhatsApp, handle cancellations, send reminders, and manually update calendars. These repetitive operational tasks consume time that could otherwise be spent assisting patients.
+
+Existing clinic management software often focuses on medical records and administration, but communication still depends on manual effort. As patient volume grows, this operational overhead grows with it.
+
+The goal of AI Clinic OS was not to replace clinic staff. It was to reduce repetitive administrative work by combining conversational AI with reliable workflow automation, allowing staff to focus on patient care while the system handles routine operations.
