@@ -86,7 +86,8 @@ Instead of allowing the language model to control every operation, responsibilit
 
 This separation improves reliability, lowers operational cost, minimizes hallucinations, and keeps business logic deterministic.
 
-> 📌 *Architecture diagram will be placed here.*
+> 📌 *Architecture diagram *
+![AI Clinic OS – System Architecture](clinic-os-architecture.png)
 
 ---
 
