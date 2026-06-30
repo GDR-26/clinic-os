@@ -228,3 +228,26 @@ If you're interested in Applied AI, workflow automation, or building operational
 ---
 
 ### Built with a product mindset, engineered for real-world operations.
+
+---
+
+# Engineering Appendix
+
+The following sections provide additional technical documentation for readers interested in the system design and engineering decisions behind AI Clinic OS.
+
+## Workflow Architecture
+
+## Workflow Responsibility Map
+
+| Workflow | Trigger | Inputs | Primary Responsibility | Outputs | Failure Handling |
+|---|---|---|---|---|---|
+| **Main Agent** | Inbound WhatsApp message | Raw patient message, session context | Orchestrates intent classification and routes to the correct engine | Routed workflow call + conversational reply | Returns a graceful fallback message; logs unhandled intents |
+| **Booking Engine** | Router dispatch on `intent: book` | Patient name, phone, date, time, service | Creates a new appointment across Calendar and Sheets | Confirmed `bookingId`, `eventId`, confirmation message | Detects slot conflicts; returns availability alternatives |
+| **Appointment Lookup Engine** | Router dispatch on `intent: lookup` | Patient phone or booking reference | Retrieves existing appointment details for the patient | Appointment record or "no booking found" response | Handles multiple matches; returns most recent by default |
+| **Reschedule Engine** | Router dispatch on `intent: reschedule` | Patient phone or `bookingId`, new date and time | Cancels the existing Calendar event and creates a replacement | Updated `eventId`, updated Sheets record, confirmation message | Rolls back Calendar update if Sheets write fails |
+| **Cancellation Engine** | Router dispatch on `intent: cancel` | Patient phone or `bookingId` | Marks appointment as cancelled in Calendar and Sheets | Cancelled status in Sheets, Calendar event removed, confirmation message | Confirms identity before cancellation; handles not-found gracefully |
+| **FAQ Engine** | Router dispatch on `intent: faq` | Patient question, clinic context | Generates a context-aware answer to common clinic enquiries | Natural language response; no data write | Falls back to "contact the clinic" if confidence is low |
+| **Reminder Engine** | Scheduled time-based trigger | Upcoming appointments from Sheets | Sends automated appointment reminders to patients via WhatsApp | Delivered WhatsApp reminder; reminder status updated in Sheets | Retries on delivery failure; logs undelivered reminders |
+| **Review Engine** | Post-appointment trigger | Completed appointment record, patient phone | Requests a Google review from the patient after their visit | Review request message delivered via WhatsApp | Skips if patient previously received a review request |
+| **No-show Recovery Engine** | Scheduled trigger on missed appointments | No-show flagged records from Sheets | Re-engages patients who missed their appointment with a recovery message | Re-engagement message delivered; no-show status updated | Caps re-engagement attempts; suppresses after limit is reached |
+
