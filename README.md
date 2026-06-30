@@ -86,7 +86,6 @@ Instead of allowing the language model to control every operation, responsibilit
 
 This separation improves reliability, lowers operational cost, minimizes hallucinations, and keeps business logic deterministic.
 
-> 📌 *Architecture diagram *
 ![AI Clinic OS – System Architecture](clinic-os-architecture.png)
 
 ---
@@ -219,7 +218,7 @@ That principle now guides how I design every AI automation system.
 
 # Engineering Design
 
-The following sections provide additional technical documentation for readers interested in the system design and engineering decisions behind AI Clinic OS.
+The following sections document the workflow architecture and data model behind AI Clinic OS.
 
 ## Workflow Architecture
 
