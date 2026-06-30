@@ -217,27 +217,11 @@ That principle now guides how I design every AI automation system.
 
 ---
 
-# Connect
-
-If you're interested in Applied AI, workflow automation, or building operational AI systems, I'd be happy to connect.
-
-* 💼 **LinkedIn:** https://linkedin.com/in/dhruva-reddy-gaddam
-* 💻 **GitHub:** https://github.com/GDR-26
-* 🌐 **Portfolio:** *Coming Soon*
-
----
-
-### Built with a product mindset, engineered for real-world operations.
-
----
-
-# Engineering Appendix
+# Engineering Design
 
 The following sections provide additional technical documentation for readers interested in the system design and engineering decisions behind AI Clinic OS.
 
 ## Workflow Architecture
-
-## Workflow Responsibility Map
 
 | Workflow | Trigger | Inputs | Primary Responsibility | Outputs | Failure Handling |
 |---|---|---|---|---|---|
@@ -255,8 +239,6 @@ The following sections provide additional technical documentation for readers in
 
 ## Data Schema
 
-## Appointment Data Schema
-
 | Field Name | Data Type | Purpose | Example Value |
 |---|---|---|---|
 | `booking_id` | string (UUID) | Unique identifier for the appointment, used as the primary key across all systems | `bk_8f2a1c9d` |
@@ -273,3 +255,13 @@ The following sections provide additional technical documentation for readers in
 | `review_requested` | boolean | Tracks whether a post-visit review request has been sent | `false` |
 | `no_show_flag` | boolean | Marks an appointment as missed, used to trigger recovery workflows | `false` |
 | `source_channel` | string (enum) | Origin of the booking, useful for analytics and multi-channel support | `whatsapp` |
+
+---
+
+# Connect
+
+If you're interested in Applied AI, workflow automation, or building operational AI systems, I'd be happy to connect.
+
+* 💼 **LinkedIn:** https://linkedin.com/in/dhruva-reddy-gaddam
+* 💻 **GitHub:** https://github.com/GDR-26
+* 🌐 **Portfolio:** *Coming Soon*
