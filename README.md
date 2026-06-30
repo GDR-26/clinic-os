@@ -251,3 +251,25 @@ The following sections provide additional technical documentation for readers in
 | **Review Engine** | Post-appointment trigger | Completed appointment record, patient phone | Requests a Google review from the patient after their visit | Review request message delivered via WhatsApp | Skips if patient previously received a review request |
 | **No-show Recovery Engine** | Scheduled trigger on missed appointments | No-show flagged records from Sheets | Re-engages patients who missed their appointment with a recovery message | Re-engagement message delivered; no-show status updated | Caps re-engagement attempts; suppresses after limit is reached |
 
+---
+
+## Data Schema
+
+## Appointment Data Schema
+
+| Field Name | Data Type | Purpose | Example Value |
+|---|---|---|---|
+| `booking_id` | string (UUID) | Unique identifier for the appointment, used as the primary key across all systems | `bk_8f2a1c9d` |
+| `event_id` | string | Reference to the corresponding Google Calendar event, used to keep Sheets and Calendar in sync | `cal_4f9e2b1a` |
+| `patient_phone` | string (E.164) | Unique patient identifier used for lookups, reminders, and conversation continuity | `+919876543210` |
+| `patient_name` | string | Display name for confirmations, reminders, and staff-facing views | `Aditi Rao` |
+| `service_type` | string (enum) | The clinic service booked, used for duration and resource allocation | `dental_cleaning` |
+| `appointment_date` | date (ISO 8601) | Scheduled date of the appointment | `2026-07-04` |
+| `appointment_time` | time (ISO 8601) | Scheduled time of the appointment | `15:30` |
+| `status` | string (enum) | Current lifecycle state of the appointment | `confirmed` |
+| `created_at` | timestamp (ISO 8601, UTC) | Record creation time, used for auditing and ordering | `2026-06-28T09:12:44Z` |
+| `updated_at` | timestamp (ISO 8601, UTC) | Last modification time, used for sync conflict detection | `2026-06-29T11:05:02Z` |
+| `reminder_sent` | boolean | Tracks whether a reminder has already been delivered, prevents duplicate sends | `true` |
+| `review_requested` | boolean | Tracks whether a post-visit review request has been sent | `false` |
+| `no_show_flag` | boolean | Marks an appointment as missed, used to trigger recovery workflows | `false` |
+| `source_channel` | string (enum) | Origin of the booking, useful for analytics and multi-channel support | `whatsapp` |
